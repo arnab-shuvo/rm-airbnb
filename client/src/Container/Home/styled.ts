@@ -2,12 +2,9 @@ import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import bg from '../../assets/images/bg.jpg';
 
-export const HomeWrapper = styled(Grid)`
-	min-height: 100vh;
-	background: url(${bg});
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+export const HomeWrapper = styled.div`
+	padding-top: 20px;
+	padding-bottom: 40px;
 `;
 
 export const BannerText = styled.div`

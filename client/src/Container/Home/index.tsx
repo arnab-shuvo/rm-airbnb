@@ -1,12 +1,16 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { HomeWrapper, BannerText } from './styled';
-import SearchBox from '../../Components/SearchBox';
+import ReviewBlock from './ReviewBlock';
+import JustBookedBlock from './JustBookedBlock';
+import PlacesInCity from './PlacesInCity';
 
 const Home: React.FC = () => {
 	return (
-		<HomeWrapper container justify='center' alignItems='center'>
-			dasdasdas
+		<HomeWrapper>
+			<ReviewBlock />
+			<JustBookedBlock />
+			<PlacesInCity />
 		</HomeWrapper>
 	);
 };

@@ -1,7 +1,9 @@
-interface PackageInfo {
-	packageInfo: Package;
+interface IBookedItemProps {
+	bg: string;
 }
-
-interface PackageSize {
-	name: string | undefined;
+interface IBookedItem {
+	bg: string;
+}
+interface IPlaceItem {
+	bg: string;
 }

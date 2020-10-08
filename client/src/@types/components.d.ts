@@ -1,16 +1,14 @@
-interface Logo {
-	align?: 'center' | 'left' | 'right';
-}
-interface SuggestionItem {
-	name: string;
-	description: string;
-}
+declare module 'react-slideshow-image';
 
-interface Chart {
-	versions: VersionData[];
+interface IPageContainer {
+	children: ReactNode;
 }
-type ChartData = {
-	product?: string;
-	Zipped?: number;
-	Unzipped?: number;
-}[];
+interface ICustomGrid {
+	children: ReactNode;
+	md: number;
+	xs: number;
+	isSpaced: boolean;
+}
+interface ISliderProps {
+	sliderImage: string;
+}

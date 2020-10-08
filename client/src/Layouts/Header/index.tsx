@@ -1,13 +1,14 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { HeaderWrapper } from './styled';
+import LeftHeader from './LeftHeader';
 
 const Header: React.FC = () => {
 	return (
 		<HeaderWrapper>
 			<Grid container>
 				<Grid item md={6} xs={12}>
-					sdads
+					<LeftHeader />
 				</Grid>
 				<Grid item md={6} xs={12}>
 					<ul>
