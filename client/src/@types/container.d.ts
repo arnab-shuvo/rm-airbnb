@@ -7,3 +7,7 @@ interface IBookedItem {
 interface IPlaceItem {
 	bg: string;
 }
+interface IPropertyImage {
+	bg: string;
+	height: string;
+}

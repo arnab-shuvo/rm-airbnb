@@ -1,3 +1,8 @@
+/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 09/10/2020 15:05
+  	*/
+
 @font-face {
 	font-family: 'Flaticon';
 	src: url('./Fonts/Flaticon.eot');
@@ -25,16 +30,24 @@
 	margin-right: 20px;
 }
 
-.flaticon-shooting-star:before {
+.flaticon-home:before {
 	content: '\f100';
 }
-.flaticon-black-star-silhouette:before {
+.flaticon-breakfast-table:before {
 	content: '\f101';
 }
-.flaticon-airbnb:before {
+.flaticon-check:before {
 	content: '\f102';
 }
-
+.flaticon-call:before {
+	content: '\f103';
+}
+.flaticon-black-star-silhouette:before {
+	content: '\f104';
+}
+.flaticon-shooting-star:before {
+	content: '\f105';
+}
 .text-left {
 	text-align: left;
 }

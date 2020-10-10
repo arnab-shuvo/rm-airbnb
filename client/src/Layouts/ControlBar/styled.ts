@@ -25,13 +25,13 @@ export const SearchPanelWrapper = styled.div`
 			position: relative;
 			z-index: 1111;
 			p {
-				color: #fff;
 				&.title {
 					font-size: 2rem;
 					font-weight: bold;
+					color: #fff;
 				}
-				color: #fff;
 				&.sub-title {
+					color: #fff;
 					font-size: 1.2rem;
 					font-weight: 500;
 					margin-bottom: 20px;
@@ -44,6 +44,19 @@ export const SearchPanelWrapper = styled.div`
 			padding: 5px;
 		}
 		&-item {
+			position: relative;
+			.date-range-picker-container {
+				position: absolute;
+				width: auto;
+				top: 100%;
+				left: 0;
+			}
+			.picker-wrapper div {
+				justify-content: space-evenly !important;
+				button {
+					width: 36px !important;
+				}
+			}
 			padding-right: 5px;
 			&.last {
 				padding-right: 0;

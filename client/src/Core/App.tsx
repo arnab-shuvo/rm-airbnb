@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Home from '../Container/Home';
+import CreateProperty from '../Container/Create';
 import SearchPage from '../Container/SearchPage';
+import Details from '../Container/Details';
 import MainLayout from '../Layouts/MainLayout';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './App.css';
@@ -22,8 +24,10 @@ function App() {
 			<Router>
 				<MainLayout>
 					<Switch>
-						<Route exact path='/' component={SearchPage} />
+						<Route exact path='/' component={CreateProperty} />
 						<Route exact path='/search' component={SearchPage} />
+						<Route exact path='/create' component={CreateProperty} />
+						<Route exact path='/property/:id' component={Details} />
 						<Route path='*' render={() => <Redirect to='/' />} />
 					</Switch>
 				</MainLayout>

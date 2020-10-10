@@ -7,14 +7,6 @@ const SearchPage: React.FC = () => {
 	return (
 		<SearchPageWrapper>
 			<SearchedItem />
-			<SearchedItem />
-			<SearchedItem />
-			<SearchedItem />
-			<SearchedItem />
-			<SearchedItem />
-			<SearchedItem />
-			<SearchedItem />
-			<SearchedItem />
 		</SearchPageWrapper>
 	);
 };
