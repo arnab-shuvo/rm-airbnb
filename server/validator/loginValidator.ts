@@ -9,7 +9,6 @@ module.exports = (req: any, res: any, next: any) => {
 	});
 
 	const errors = req.validationErrors();
-	console.log(errors, 'errors');
 
 	if (errors) {
 		return res.status(400).json(errors);

@@ -6,31 +6,34 @@ const path = require('path');
 const router = require('./routes');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
-const passport = require('passport')
+const passport = require('passport');
 
 require('./auth/auth');
 dotenv.config();
 
-
 mongoose
 	.connect('mongodb://localhost:27017/airBnb', {
 		useNewUrlParser: true,
+		useUnifiedTopology: true,
 	})
 	.then(() => console.log('DB Connected'))
-	.catch((err:any) => console.log(`error connecting db::  ${err.message}`));
-
+	.catch((err: any) => console.log(`error connecting db::  ${err.message}`));
+mongoose.set('useCreateIndex', true);
 
 const app = express();
 app.use(morgan('dev'));
 app.use(expressValidator());
 app.use(passport.initialize());
 
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(
+	bodyParser.urlencoded({
+		extended: true,
+		limit: '50mb',
+	}),
+);
 app.use(express.static(path.resolve(__dirname, '../client/build')));
-
-
-
-
+app.use('/fileserver', express.static(path.join(__dirname, '')));
 app.use('/api', router);
 
 app.get('*', (req: any, res: any) => {
@@ -41,4 +44,3 @@ const port = 3000;
 app.listen(port, () => {
 	console.log(`Listening ${port}`);
 });
-

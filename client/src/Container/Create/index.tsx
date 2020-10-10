@@ -13,6 +13,7 @@ const CreateProperty: React.FC = () => {
 	const [currency, setCurrency] = React.useState('single');
 	const [open, setOpen] = useState<boolean>(false);
 	const [dateRange, setDateRange] = useState<DateRange>({});
+	console.log(dateRange, 'dateRange');
 
 	const uploadFile = (files: File[]) => {
 		if (files.length) {

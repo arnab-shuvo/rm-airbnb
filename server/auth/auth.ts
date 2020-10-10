@@ -2,6 +2,8 @@ import passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
+const JWTstrategy = require('passport-jwt').Strategy;
+const ExtractJWT = require('passport-jwt').ExtractJwt;
 
 //Create a passport middleware to handle user registration
 passport.use(
@@ -11,7 +13,7 @@ passport.use(
 			usernameField: 'email',
 			passwordField: 'password',
 		},
-		async (email:any, password:any, done:any) => {
+		async (email: any, password: any, done: any) => {
 			email = email.toLowerCase();
 			try {
 				//Find the user associated with the email provided by the user
@@ -21,18 +23,14 @@ passport.use(
 					const user = await User.create({ email, password });
 					//Send the user information to the next middleware
 					console.log('in the reg');
-					
+
 					return done(null, {
 						message: 'Registration Successful',
 						status: true,
 						user,
 					});
 				}
-				return done(
-					null,
-					{ status: false },
-					{ message: 'Email already exist' },
-				);
+				return done(null, { status: false }, { message: 'Email already exist' });
 			} catch (error) {
 				done(error);
 			}
@@ -48,7 +46,7 @@ passport.use(
 			usernameField: 'email',
 			passwordField: 'password',
 		},
-		async (email:any, password:any, done:any) => {			
+		async (email: any, password: any, done: any) => {
 			try {
 				//Find the user associated with the email provided by the user
 				const user = await User.findOne({ email });
@@ -79,6 +77,24 @@ passport.use(
 				});
 			} catch (error) {
 				return done(error);
+			}
+		},
+	),
+);
+
+passport.use(
+	new JWTstrategy(
+		{
+			secretOrKey: 'TOP_SECRET',
+			jwtFromRequest: ExtractJWT.fromUrlQueryParameter('secret_token'),
+		},
+		async (token: any, done: any) => {
+			console.log(token, 'tokentokentokentokentokentokentokentokentokentokentoken');
+
+			try {
+				return done(null, token.user);
+			} catch (error) {
+				done(error);
 			}
 		},
 	),

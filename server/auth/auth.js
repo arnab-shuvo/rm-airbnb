@@ -40,6 +40,8 @@ var passport = require("passport");
 var localStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
 var jwt = require('jsonwebtoken');
+var JWTstrategy = require('passport-jwt').Strategy;
+var ExtractJWT = require('passport-jwt').ExtractJwt;
 //Create a passport middleware to handle user registration
 passport.use('signup', new localStrategy({
     usernameField: 'email',
@@ -119,5 +121,20 @@ passport.use('login', new localStrategy({
                 return [2 /*return*/, done(error_2)];
             case 4: return [2 /*return*/];
         }
+    });
+}); }));
+passport.use(new JWTstrategy({
+    secretOrKey: 'TOP_SECRET',
+    jwtFromRequest: ExtractJWT.fromUrlQueryParameter('secret_token'),
+}, function (token, done) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        console.log(token, 'tokentokentokentokentokentokentokentokentokentokentoken');
+        try {
+            return [2 /*return*/, done(null, token.user)];
+        }
+        catch (error) {
+            done(error);
+        }
+        return [2 /*return*/];
     });
 }); }));

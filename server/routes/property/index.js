@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express = require("express");
+var router = express.Router();
+var passport = require('passport');
+var authValidator = require('../../validator/authValidator');
+var _a = require('../../controller/propertyController'), createProperty = _a.createProperty, getProperty = _a.getProperty, searchProperty = _a.searchProperty, addComment = _a.addComment, getPropertyDetail = _a.getPropertyDetail, latestProperty = _a.latestProperty;
+var propertyValidator = require('../../validator/propertyValidator');
+var commentValidator = require('../../validator/commentValidator');
+router.get('/', getProperty);
+router.get('/search', searchProperty);
+router.get('/latestReviews', latestProperty);
+router.post('/comment', commentValidator, addComment);
+router.get('/:id', getPropertyDetail);
+router.post('/', authValidator, propertyValidator, createProperty);
+module.exports = router;

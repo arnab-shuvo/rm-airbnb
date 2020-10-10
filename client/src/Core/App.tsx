@@ -24,7 +24,7 @@ function App() {
 			<Router>
 				<MainLayout>
 					<Switch>
-						<Route exact path='/' component={CreateProperty} />
+						<Route exact path='/' component={Home} />
 						<Route exact path='/search' component={SearchPage} />
 						<Route exact path='/create' component={CreateProperty} />
 						<Route exact path='/property/:id' component={Details} />

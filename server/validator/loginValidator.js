@@ -9,7 +9,6 @@ module.exports = function (req, res, next) {
         max: 20,
     });
     var errors = req.validationErrors();
-    console.log(errors, 'errors');
     if (errors) {
         return res.status(400).json(errors);
     }

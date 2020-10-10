@@ -15,7 +15,7 @@ router.post('/signup', signUpValidator, passport.authenticate('signup', { sessio
     if (req.user.status) {
         res.json({
             message: req.user.message,
-            id: req.user.user._id
+            id: req.user.user._id,
         });
     }
     else {
