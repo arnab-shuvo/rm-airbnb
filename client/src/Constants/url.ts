@@ -1,5 +1,6 @@
-export const FILES_SERVER = `${process.env.REACT_APP_BASE_URL}/fileserver`;
-export const PROEPRTY_LIST_URL = `${process.env.REACT_APP_BASE_URL}/api/proeprty/`;
-export const PROEPRTY_CREATE_URL = `${process.env.REACT_APP_BASE_URL}/api/proeprty/`;
-export const PROEPRTY_SEARCH_URL = `${process.env.REACT_APP_BASE_URL}/api/proeprty/search`;
-export const PROEPRTY_COMMENT_URL = `${process.env.REACT_APP_BASE_URL}/api/proeprty/comment`;
+import BASE_URL from '../config';
+export const FILES_SERVER = `${BASE_URL}/fileserver/`;
+export const PROPERTY_URL = `${BASE_URL}/api/property/`;
+export const PROPERTY_SEARCH_URL = `${BASE_URL}/api/property/search`;
+export const PROPERTY_COMMENT_URL = `${BASE_URL}/api/property/comment`;
+export const LATEST_REVIEW_URL = `${BASE_URL}/api/property/latest-reviews`;

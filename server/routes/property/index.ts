@@ -8,7 +8,7 @@ const commentValidator = require('../../validator/commentValidator');
 
 router.get('/', getProperty);
 router.get('/search', searchProperty);
-router.get('/latestReviews', latestProperty);
+router.get('/latest-reviews', latestProperty);
 router.post('/comment', commentValidator, addComment);
 router.get('/:id', getPropertyDetail);
 

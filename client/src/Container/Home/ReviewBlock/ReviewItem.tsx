@@ -1,25 +1,31 @@
 import React from 'react';
 import { ReviewItemWrapper } from './styled';
 import Grid from '@material-ui/core/Grid';
+import ImageUrlBuilder from '../../../util/imageUrlBuilder';
+import { useHistory } from 'react-router';
+import ratingCalculator from '../../../util/ratingCalculator';
 
-const ReviewItem: React.FC = () => {
+const ReviewItem: React.FC<ILatestReviewProp> = ({ property }) => {
+	const { title, comments, description, image, uuid } = property;
+	const history = useHistory();
+
+	let latestComment = comments[comments.length - 1];
+	let actualRating = ratingCalculator(comments);
+
+	const propertyDetail = (id: string) => {
+		history.push(`property/${id}`);
+	};
+
 	return (
-		<ReviewItemWrapper>
-			<div
-				className='item-img'
-				style={{ background: 'url(https://a0.muscache.com/4ea/air/v2/pictures/1b66acbb-f665-43c5-a505-794a4f343e6b.jpg)' }}></div>
+		<ReviewItemWrapper onClick={() => propertyDetail(uuid)}>
+			<div className='item-img' style={{ background: `url(${ImageUrlBuilder(image[0])})` }}></div>
 			<div className='item-star'>
-				<i className='flaticon-black-star-silhouette'></i>
-				<i className='flaticon-black-star-silhouette'></i>
-				<i className='flaticon-black-star-silhouette'></i>
-				<i className='flaticon-black-star-silhouette'></i>
-				<i className='flaticon-black-star-silhouette'></i>
+				{Array.from({ length: actualRating }, (item, index) => (
+					<i key={index} className='flaticon-black-star-silhouette'></i>
+				))}
 			</div>
 			<div className='item-des'>
-				<p>
-					A Private Room in Shared flat with a friendly professional female and her two lovable pugs(dogs).I look forward to hosting you in
-					my home and welcoming you to London
-				</p>
+				<p>{latestComment.comment}</p>
 			</div>
 			<div className='item-reviewer'>
 				<Grid container>
@@ -30,8 +36,8 @@ const ReviewItem: React.FC = () => {
 					</Grid>
 					<Grid item md={8}>
 						<div className='reviewer-info'>
-							<p className='name'>Nicky</p>
-							<p className='location'>Bangaldesh</p>
+							<p className='name'>{latestComment.user.name}</p>
+							<p className='location'>{latestComment.user.location}</p>
 						</div>
 					</Grid>
 				</Grid>

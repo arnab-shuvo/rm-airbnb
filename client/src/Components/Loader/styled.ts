@@ -1,6 +1,16 @@
 import styled from 'styled-components';
 
 export const LoaderImage = styled.div`
+	position: absolute;
+	background: rgb(255 255 255 / 57%);
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 11111;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	.load-wrapp:last-child {
 		margin-right: 0;
 	}
@@ -9,7 +19,7 @@ export const LoaderImage = styled.div`
 		width: 15px;
 		height: 15px;
 		border-radius: 15px;
-		background-color: #c7c7c7;
+		background-color: #00a799;
 	}
 
 	.load-3 .line:nth-last-child(1) {

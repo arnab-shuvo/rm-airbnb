@@ -6,3 +6,7 @@ export default (type: string, str?: Date) => {
 		return type;
 	}
 };
+
+export const DateParserToISO = (dateString: string) => {
+	return new Date(Date.parse(dateString)).toISOString();
+};

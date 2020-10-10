@@ -11,3 +11,7 @@ interface IPropertyImage {
 	bg: string;
 	height: string;
 }
+
+interface ILatestReviewProp {
+	property: ILatestReviewProperty;
+}

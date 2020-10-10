@@ -16,7 +16,7 @@ const ControlBar: React.FC = () => {
 			<TabPanel>
 				<Tabs value={value} indicatorColor='primary' textColor='primary' onChange={handleChange} aria-label='disabled tabs example'>
 					<Tab label='FOR YOU' />
-					<Tab label='HOMES' disabled />
+					<Tab label='Homes' disabled />
 					<Tab label='EXPERIENCES' disabled />
 					<Tab label='PLACES' disabled />
 				</Tabs>

@@ -1,25 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { DetailWrapper, PropertyImage, PropertyImageWrapper } from './styled';
 import { DateRangePicker, DateRange } from 'materialui-daterange-picker';
 import dateConverter from '../../util/dateTimeUtil';
 import Button from '@material-ui/core/Button';
 import TripAdvisor from '../../assets/images/tr_a.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPropertyDetail } from '../../Store/Actions/PopertyDetailAction';
+import { useParams } from 'react-router';
 
 const Details: React.FC = () => {
+	const dispatch = useDispatch();
+	const detail = useSelector((state: IRootStore) => state.detailStore);
 	const [open, setOpen] = useState<boolean>(false);
 	const [dateRange, setDateRange] = useState<DateRange>({});
+	const { id } = useParams<{ id: string }>();
+	useEffect(() => {
+		console.log(detail, 'detail');
+		dispatch(fetchPropertyDetail(id));
+	}, []);
+
 	return (
 		<DetailWrapper container>
 			<Grid item md={12} xs={12}>
 				<div className='property-summary'>
 					<p className='property-summary-title'>
-						Hotel Al Baroda Ocean Club
+						{detail.property.title ?? ''}
 						<i className='flaticon-black-star-silhouette'></i>
 						<i className='flaticon-black-star-silhouette'></i>
 						<i className='flaticon-black-star-silhouette'></i>
 					</p>
-					<p className='property-summary-subtitle'>Costa Del Silencio, Tenerife, Canary ISlands</p>
+					<p className='property-summary-subtitle'>
+						{detail.property.city ?? ''}, {detail.property.country ?? ''}
+					</p>
 					<img src={TripAdvisor} />
 				</div>
 			</Grid>
@@ -37,8 +50,8 @@ const Details: React.FC = () => {
 					<div className='property-des'>
 						<Grid container>
 							<Grid item md={11} xs={12}>
-								<p className='property-des-title'>Private Room- 1Double & 1Single Bed-Central London</p>
-								<p className='property-des-lcoation'>London</p>
+								<p className='property-des-title'>{detail.property.description ?? ''}</p>
+								<p className='property-des-lcoation'>{detail.property.city ?? ''}</p>
 							</Grid>
 							<Grid item md={1} xs={12}>
 								<img src={'https://cdn.iconscout.com/icon/premium/png-256-thumb/female-avatar-12-774634.png'} />
@@ -101,6 +114,7 @@ const Details: React.FC = () => {
 								onFocus={() => setOpen(true)}
 								onBlur={() => setOpen(true)}
 								value={`${dateConverter('Start Date', dateRange.startDate)} - ${dateConverter('End Date', dateRange.endDate)}  `}
+								onChange={(e) => console.log()}
 							/>
 							<div className='date-range-picker-container'>
 								<DateRangePicker
@@ -111,6 +125,8 @@ const Details: React.FC = () => {
 										setDateRange(range);
 										setOpen(false);
 									}}
+									minDate={detail.property.start_date ?? ''}
+									maxDate={detail.property.end_date ?? ''}
 								/>
 							</div>
 						</div>

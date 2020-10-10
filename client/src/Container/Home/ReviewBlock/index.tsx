@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import ReviewItem from './ReviewItem';
 import { ReviewerBlockWrapper } from './styled';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchLatestReviewPackage } from '../../../Store/Actions/LatestReviewAction';
 
 const ReviewBlock: React.FC = () => {
+	const dispatch = useDispatch();
+	const { properties } = useSelector((state: IRootStore) => state.latestRevewStore);
+	useEffect(() => {
+		dispatch(fetchLatestReviewPackage());
+	}, []);
+
 	return (
 		<ReviewerBlockWrapper container>
 			<Grid item md={12} xs={12}>
@@ -14,15 +22,14 @@ const ReviewBlock: React.FC = () => {
 				</p>
 			</Grid>
 			<Grid container item md={12} xs={12} spacing={2}>
-				<Grid item md={4} xs={12}>
-					<ReviewItem />
-				</Grid>
-				<Grid item md={4} xs={12}>
-					<ReviewItem />
-				</Grid>
-				<Grid item md={4} xs={12}>
-					<ReviewItem />
-				</Grid>
+				{properties.length &&
+					properties.map((property: ILatestReviewProperty, index: number) => {
+						return (
+							<Grid item md={4} xs={12} key={index}>
+								<ReviewItem property={property} />
+							</Grid>
+						);
+					})}
 			</Grid>
 		</ReviewerBlockWrapper>
 	);

@@ -1,1 +1,5 @@
-export const TEST = 'TEST';
+export const LATEST_REVIEW = 'LATEST_REVIEW';
+export const LOADER_ON = 'LOADER_ON';
+export const LOADER_OFF = 'LOADER_OFF';
+export const PROPERTY_DETAIL = 'PROPERTY_DETAIL';
+export const PROPERTY_SEARCH = 'PROPERTY_SEARCH';

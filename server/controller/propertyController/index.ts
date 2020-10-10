@@ -43,7 +43,9 @@ async function getProperty(req: any, res: any) {
 }
 
 async function searchProperty(req: any, res: any) {
-	const { page = 1, limit = 10, start_date, end_date, location } = req.query;
+	let { page = 1, limit = 10, start_date, end_date, location } = req.query;
+	page = parseInt(page);
+	console.log(start_date, end_date);
 
 	try {
 		let property = await Property.find({
@@ -51,10 +53,10 @@ async function searchProperty(req: any, res: any) {
 			$and: [
 				{
 					start_date: {
-						$gte: start_date,
+						$gt: start_date,
 					},
 					end_date: {
-						$lte: end_date,
+						$lt: end_date,
 					},
 				},
 			],

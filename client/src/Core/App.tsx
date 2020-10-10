@@ -7,6 +7,7 @@ import Details from '../Container/Details';
 import MainLayout from '../Layouts/MainLayout';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './App.css';
+import Loader from '../Components/Loader';
 
 function App() {
 	const theme = createMuiTheme({
@@ -19,8 +20,11 @@ function App() {
 			},
 		},
 	});
+	console.log(process.env, 'process.env');
+
 	return (
 		<MuiThemeProvider theme={theme}>
+			<Loader />
 			<Router>
 				<MainLayout>
 					<Switch>

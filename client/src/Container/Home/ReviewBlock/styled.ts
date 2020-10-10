@@ -27,7 +27,8 @@ export const ReviewItemWrapper = styled.div`
 		&-img {
 			width: 100%;
 			height: 250px;
-			background-size: cover;
+			background-size: cover !important;
+			background-position: center !important;
 			border-radius: 5px;
 		}
 		&-star {

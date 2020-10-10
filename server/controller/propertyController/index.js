@@ -105,21 +105,13 @@ function searchProperty(req, res) {
             switch (_d.label) {
                 case 0:
                     _a = req.query, _b = _a.page, page = _b === void 0 ? 1 : _b, _c = _a.limit, limit = _c === void 0 ? 10 : _c, start_date = _a.start_date, end_date = _a.end_date, location = _a.location;
+                    page = parseInt(page);
+                    console.log(start_date, end_date);
                     _d.label = 1;
                 case 1:
                     _d.trys.push([1, 4, , 5]);
                     return [4 /*yield*/, Property.find({
                             $or: [{ city: new RegExp(location, 'gi') }, { country: new RegExp(location, 'gi') }],
-                            $and: [
-                                {
-                                    start_date: {
-                                        $gte: start_date,
-                                    },
-                                    end_date: {
-                                        $lte: end_date,
-                                    },
-                                },
-                            ],
                         })
                             .limit(limit * 1)
                             .skip((page - 1) * limit)
