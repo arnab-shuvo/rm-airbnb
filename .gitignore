@@ -14,6 +14,8 @@ coverage
 dist
 bundles
 
+uploads
+
 # Editors
 # =======
 .idea
