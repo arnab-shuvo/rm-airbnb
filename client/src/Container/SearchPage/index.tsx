@@ -19,10 +19,10 @@ const SearchPage: React.FC = () => {
 		let searchQuery: any = {
 			page: 1,
 		};
-		if (startDate && endDate) {
-			searchQuery.start_date = DateParserToISO(startDate.toString());
-			searchQuery.end_date = DateParserToISO(endDate.toString());
-		}
+		// if (startDate && endDate) {
+		// 	searchQuery.start_date = DateParserToISO(startDate.toString());
+		// 	searchQuery.end_date = DateParserToISO(endDate.toString());
+		// }
 		if (location !== '') {
 			searchQuery.location = location;
 		}

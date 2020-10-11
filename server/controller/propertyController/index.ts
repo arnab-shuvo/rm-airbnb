@@ -43,28 +43,36 @@ async function getProperty(req: any, res: any) {
 }
 
 async function searchProperty(req: any, res: any) {
-	let { page = 1, limit = 10, start_date, end_date, location } = req.query;
+	let {
+		page = 1,
+		limit = 10,
+		start_date = new Date(),
+		end_date = new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
+		location = '',
+	} = req.query;
 	page = parseInt(page);
-	console.log(start_date, end_date);
+	console.log(start_date, end_date, location);
 
 	try {
 		let property = await Property.find({
-			$or: [{ city: new RegExp(location, 'gi') }, { country: new RegExp(location, 'gi') }],
+			// $or: [{ city: new RegExp(location, 'gi') }, { country: new RegExp(location, 'gi') }],
 			$and: [
 				{
 					start_date: {
-						$gt: start_date,
+						$gte: start_date,
 					},
+				},
+				{
 					end_date: {
-						$lt: end_date,
+						$lte: end_date,
 					},
 				},
 			],
 		})
-			.limit(limit * 1)
-			.skip((page - 1) * limit)
+			// .limit(limit * 1)
+			// .skip((page - 1) * limit)
 			.exec();
-
+		console.log(property, 'property');
 		const count = await Property.countDocuments();
 
 		res.json({

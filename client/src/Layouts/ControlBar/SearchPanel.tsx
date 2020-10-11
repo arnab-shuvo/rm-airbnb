@@ -22,7 +22,7 @@ const SearchPanel: React.FC = () => {
 		if (!Object.keys(dateRange).length && location === '') {
 			toast.error(' Date Range or Location is required');
 		} else {
-			history.push(`/search?location${location}&start_date=${dateRange.startDate}&end_date=${dateRange.endDate}`);
+			history.push(`/search?location=${location}&start_date=${dateRange.startDate}&end_date=${dateRange.endDate}`);
 		}
 	};
 

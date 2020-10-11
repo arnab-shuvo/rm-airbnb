@@ -8,6 +8,7 @@ import TripAdvisor from '../../assets/images/tr_a.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPropertyDetail } from '../../Store/Actions/PopertyDetailAction';
 import { useParams } from 'react-router';
+import { FILES_SERVER } from '../../Constants/url';
 
 const Details: React.FC = () => {
 	const dispatch = useDispatch();
@@ -16,7 +17,6 @@ const Details: React.FC = () => {
 	const [dateRange, setDateRange] = useState<DateRange>({});
 	const { id } = useParams<{ id: string }>();
 	useEffect(() => {
-		console.log(detail, 'detail');
 		dispatch(fetchPropertyDetail(id));
 	}, []);
 
@@ -38,11 +38,11 @@ const Details: React.FC = () => {
 			</Grid>
 			<PropertyImageWrapper container item md={12} xs={12}>
 				<Grid item md={8} xs={12}>
-					<PropertyImage bg={'https://a0.muscache.com/4ea/air/v2/pictures/7fbb6427-c0f2-4336-b491-b21d2c866c39.jpg'} height={'500'} />
+					{detail.property.image?.length && <PropertyImage bg={FILES_SERVER + detail.property.image[0]} height={'500'} />}
 				</Grid>
 				<Grid item md={4} xs={12}>
-					<PropertyImage bg={'https://a0.muscache.com/4ea/air/v2/pictures/7fbb6427-c0f2-4336-b491-b21d2c866c39.jpg'} height={'250'} />
-					<PropertyImage bg={'https://a0.muscache.com/4ea/air/v2/pictures/7fbb6427-c0f2-4336-b491-b21d2c866c39.jpg'} height={'250'} />
+					{detail.property.image?.length && <PropertyImage bg={FILES_SERVER + detail.property.image[1]} height={'250'} />}
+					{detail.property.image?.length && <PropertyImage bg={FILES_SERVER + detail.property.image[2]} height={'250'} />}
 				</Grid>
 			</PropertyImageWrapper>
 			<Grid container item md={12} xs={12} spacing={6}>
@@ -133,6 +133,9 @@ const Details: React.FC = () => {
 						<Button className='submit-btn' variant='contained' color='secondary'>
 							Reserve
 						</Button>
+					</div>
+					<div className='property-comment'>
+						<p>Overall Rating: </p>
 					</div>
 				</Grid>
 			</Grid>

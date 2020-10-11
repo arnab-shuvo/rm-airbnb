@@ -5,10 +5,35 @@ const FooterBottom: React.FC = () => {
 	return (
 		<FooterBottomWrapper container>
 			<Grid item md={6} xs={12}>
-				asdasd
+				<p className='name'>WaterCNC</p>
 			</Grid>
 			<Grid item md={6} xs={12}>
-				asdasd
+				<ul>
+					<li>
+						<a>Terms</a>
+					</li>
+					<li>
+						<a>Privacy</a>
+					</li>
+					<li>
+						<a>Sitemap</a>
+					</li>
+					<li>
+						<a>
+							<i className='flaticon-'></i>
+						</a>
+					</li>
+					<li>
+						<a>
+							<i className='flaticon-'></i>
+						</a>
+					</li>
+					<li>
+						<a>
+							<i className='flaticon-'></i>
+						</a>
+					</li>
+				</ul>
 			</Grid>
 		</FooterBottomWrapper>
 	);
