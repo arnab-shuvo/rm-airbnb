@@ -43,28 +43,22 @@ async function getProperty(req: any, res: any) {
 }
 
 async function searchProperty(req: any, res: any) {
-	let {
-		page = 1,
-		limit = 10,
-		start_date = new Date(),
-		end_date = new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
-		location = '',
-	} = req.query;
+	let { page = 1, limit = 10, start_date, end_date, location = '' } = req.query;
 	page = parseInt(page);
-	console.log(start_date, end_date, location);
+	console.log(new Date(start_date).toISOString(), new Date(end_date).toISOString(), location);
 
 	try {
 		let property = await Property.find({
-			// $or: [{ city: new RegExp(location, 'gi') }, { country: new RegExp(location, 'gi') }],
+			$or: [{ city: new RegExp(location, 'gi') }, { country: new RegExp(location, 'gi') }],
 			$and: [
 				{
 					start_date: {
-						$gte: start_date,
+						$lte: new Date(start_date).toISOString(),
 					},
 				},
 				{
 					end_date: {
-						$lte: end_date,
+						$lte: new Date(end_date).toISOString(),
 					},
 				},
 			],

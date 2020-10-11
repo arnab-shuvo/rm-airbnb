@@ -2,17 +2,20 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { SearchItemWrapper, SliderImage } from './styled';
 import { Fade } from 'react-slideshow-image';
+import { FILES_SERVER } from '../../Constants/url';
 import 'react-slideshow-image/dist/styles.css';
-import banner from '../../assets/images/banner.jpg';
-import banner2 from '../../assets/images/bg.jpg';
+import { useHistory } from 'react-router';
 
-const SearchedItem: React.FC = () => {
+const SearchedItem: React.FC<IPropertyDetail> = ({ property, overallRating }) => {
+	const history = useHistory();
 	return (
-		<SearchItemWrapper container spacing={3}>
+		<SearchItemWrapper container spacing={3} onClick={() => history.push(`/property/${property ? property.uuid : ''}`)}>
 			<Grid item md={5} xs={12}>
 				<Fade>
-					<SliderImage className='each-slide' sliderImage={banner}></SliderImage>
-					<SliderImage className='each-slide' sliderImage={banner2}></SliderImage>
+					{property &&
+						property.image?.map((image: string, index: number) => {
+							return <SliderImage className='each-slide' sliderImage={FILES_SERVER + image}></SliderImage>;
+						})}
 				</Fade>
 			</Grid>
 			<Grid container item md={7} xs={12}>
@@ -20,25 +23,22 @@ const SearchedItem: React.FC = () => {
 					<div className='item-rating'>
 						<Grid container>
 							<Grid item md={6} xs={12}>
-								<p className='item-type'>Private Room</p>
+								<p className='item-type'>{property ? property.property_type : ''}</p>
 							</Grid>
 							<Grid item md={6} xs={12}>
 								<p className='item-rate text-right'>
-									<i className='flaticon-black-star-silhouette'></i> 4.61 <span>(207)</span>
+									<i className='flaticon-black-star-silhouette'></i> {overallRating} <span>(207)</span>
 								</p>
 							</Grid>
 						</Grid>
 					</div>
 
 					<div className='item-title'>
-						<p>Private Room- 1Double & 1Single Bed-Central London</p>
+						<p>{property ? property.title : ''}</p>
 					</div>
 
 					<div className='item-des'>
-						<p>
-							A Private Room in Shared flat with a friendly professional female and her two lovable pugs(dogs).I look forward to hosting
-							you in my home and welcoming you to London
-						</p>
+						<p>{property ? property.description : ''}</p>
 					</div>
 				</Grid>
 				<Grid container item md={12} alignItems={'flex-end'}>

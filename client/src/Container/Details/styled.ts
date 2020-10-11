@@ -72,6 +72,7 @@ export const DetailWrapper = styled(Grid)`
 		}
 
 		&-operation{
+			margin-bottom: 20px;
 			padding: 30px;
 			border: 1px solid #cdcdcd;
 			border-radius: 5px;
@@ -126,7 +127,15 @@ export const DetailWrapper = styled(Grid)`
 				padding: 10px ;
 				font-size: 1.2rem
 			}
+			.comment-title{
+				font-size: 1.2rem;
+				font-weight: bold;
+				margin-bottom: 20px;
+			}
 		}
+	}
+	.MuiFormControl-root{
+		width: 100%;
 	}
 `;
 

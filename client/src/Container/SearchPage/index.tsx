@@ -19,10 +19,10 @@ const SearchPage: React.FC = () => {
 		let searchQuery: any = {
 			page: 1,
 		};
-		// if (startDate && endDate) {
-		// 	searchQuery.start_date = DateParserToISO(startDate.toString());
-		// 	searchQuery.end_date = DateParserToISO(endDate.toString());
-		// }
+		if (startDate && endDate) {
+			searchQuery.start_date = DateParserToISO(startDate.toString());
+			searchQuery.end_date = DateParserToISO(endDate.toString());
+		}
 		if (location !== '') {
 			searchQuery.location = location;
 		}
@@ -32,7 +32,7 @@ const SearchPage: React.FC = () => {
 	return (
 		<SearchPageWrapper>
 			{property.map((prop: any, index: number) => {
-				return <SearchedItem key={index} />;
+				return <SearchedItem property={prop} key={index} />;
 			})}
 		</SearchPageWrapper>
 	);

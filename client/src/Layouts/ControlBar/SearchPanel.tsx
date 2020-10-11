@@ -19,8 +19,8 @@ const SearchPanel: React.FC = () => {
 	const dispatch = useDispatch();
 
 	const submitSearch = () => {
-		if (!Object.keys(dateRange).length && location === '') {
-			toast.error(' Date Range or Location is required');
+		if (!Object.keys(dateRange).length) {
+			toast.error(' Date Range  is required');
 		} else {
 			history.push(`/search?location=${location}&start_date=${dateRange.startDate}&end_date=${dateRange.endDate}`);
 		}

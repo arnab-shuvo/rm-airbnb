@@ -100,27 +100,27 @@ function getProperty(req, res) {
 }
 function searchProperty(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var _a, _b, page, _c, limit, _d, start_date, _e, end_date, _f, location, property, count, err_2;
-        return __generator(this, function (_g) {
-            switch (_g.label) {
+        var _a, _b, page, _c, limit, start_date, end_date, _d, location, property, count, err_2;
+        return __generator(this, function (_e) {
+            switch (_e.label) {
                 case 0:
-                    _a = req.query, _b = _a.page, page = _b === void 0 ? 1 : _b, _c = _a.limit, limit = _c === void 0 ? 10 : _c, _d = _a.start_date, start_date = _d === void 0 ? new Date() : _d, _e = _a.end_date, end_date = _e === void 0 ? new Date(new Date().setFullYear(new Date().getFullYear() + 1)) : _e, _f = _a.location, location = _f === void 0 ? '' : _f;
+                    _a = req.query, _b = _a.page, page = _b === void 0 ? 1 : _b, _c = _a.limit, limit = _c === void 0 ? 10 : _c, start_date = _a.start_date, end_date = _a.end_date, _d = _a.location, location = _d === void 0 ? '' : _d;
                     page = parseInt(page);
-                    console.log(start_date, end_date, location);
-                    _g.label = 1;
+                    console.log(new Date(start_date).toISOString(), new Date(end_date).toISOString(), location);
+                    _e.label = 1;
                 case 1:
-                    _g.trys.push([1, 4, , 5]);
+                    _e.trys.push([1, 4, , 5]);
                     return [4 /*yield*/, Property.find({
-                            // $or: [{ city: new RegExp(location, 'gi') }, { country: new RegExp(location, 'gi') }],
+                            $or: [{ city: new RegExp(location, 'gi') }, { country: new RegExp(location, 'gi') }],
                             $and: [
                                 {
                                     start_date: {
-                                        $gte: start_date,
+                                        $lte: new Date(start_date).toISOString(),
                                     },
                                 },
                                 {
                                     end_date: {
-                                        $lte: end_date,
+                                        $lte: new Date(end_date).toISOString(),
                                     },
                                 },
                             ],
@@ -129,11 +129,11 @@ function searchProperty(req, res) {
                             // .skip((page - 1) * limit)
                             .exec()];
                 case 2:
-                    property = _g.sent();
+                    property = _e.sent();
                     console.log(property, 'property');
                     return [4 /*yield*/, Property.countDocuments()];
                 case 3:
-                    count = _g.sent();
+                    count = _e.sent();
                     res.json({
                         currentPage: page,
                         property: property,
@@ -142,7 +142,7 @@ function searchProperty(req, res) {
                     });
                     return [3 /*break*/, 5];
                 case 4:
-                    err_2 = _g.sent();
+                    err_2 = _e.sent();
                     console.error(err_2.message);
                     return [3 /*break*/, 5];
                 case 5: return [2 /*return*/];

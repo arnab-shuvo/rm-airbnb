@@ -8,20 +8,78 @@ import TripAdvisor from '../../assets/images/tr_a.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPropertyDetail } from '../../Store/Actions/PopertyDetailAction';
 import { useParams } from 'react-router';
-import { FILES_SERVER } from '../../Constants/url';
+import { FILES_SERVER, PROPERTY_COMMENT_URL } from '../../Constants/url';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
 const Details: React.FC = () => {
 	const dispatch = useDispatch();
 	const detail = useSelector((state: IRootStore) => state.detailStore);
 	const [open, setOpen] = useState<boolean>(false);
+	const [name, setName] = useState<string>();
+	const [location, setLocation] = useState<string>();
+	const [rating, setRating] = useState<number>();
+	const [comment, setComment] = useState<string>();
 	const [dateRange, setDateRange] = useState<DateRange>({});
 	const { id } = useParams<{ id: string }>();
+
+	const ratingValues = [
+		{
+			value: 1,
+			label: 'Very bad',
+		},
+		{
+			value: 2,
+			label: 'Bad',
+		},
+		{
+			value: 3,
+			label: 'Normal',
+		},
+		{
+			value: 4,
+			label: 'Good',
+		},
+		{
+			value: 5,
+			label: 'Excellent',
+		},
+	];
+
 	useEffect(() => {
 		dispatch(fetchPropertyDetail(id));
 	}, []);
 
+	const addComment = () => {
+		if (name === '' || comment === '' || !rating || location === '') {
+			toast.error(' Provide all the information to add the comment');
+		} else {
+			const commentData = {
+				uuid: id,
+				name,
+				location,
+				comment,
+				rating,
+			};
+			console.log(commentData, 'commentData');
+
+			axios
+				.post(PROPERTY_COMMENT_URL, commentData)
+				.then((success: any) => {
+					toast.success(' Comment added');
+				})
+				.catch((err: any) => {
+					toast.error('Something went wrong');
+				});
+		}
+	};
+
 	return (
 		<DetailWrapper container>
+			<ToastContainer position='top-right' newestOnTop={true} closeOnClick pauseOnHover />
 			<Grid item md={12} xs={12}>
 				<div className='property-summary'>
 					<p className='property-summary-title'>
@@ -134,8 +192,56 @@ const Details: React.FC = () => {
 							Reserve
 						</Button>
 					</div>
-					<div className='property-comment'>
-						<p>Overall Rating: </p>
+					<div className='property-operation'>
+						<p className='comment-title'>Let us know your experience: </p>
+						<Grid container spacing={2}>
+							<Grid item md={6} xs={12}>
+								<TextField
+									onChange={(e) => setName(e.target.value)}
+									id='outlined-helperText'
+									label='You Name'
+									value={name}
+									variant='outlined'
+								/>
+							</Grid>
+							<Grid item md={6} xs={12}>
+								<TextField
+									onChange={(e) => setLocation(e.target.value)}
+									id='outlined-helperText'
+									label='You Location'
+									value={location}
+									variant='outlined'
+								/>
+							</Grid>
+							<Grid item md={12} xs={12}>
+								<TextField
+									id='outlined-helperText'
+									select
+									label='How was your experience'
+									onChange={(e) => setRating(parseInt(e.target.value))}
+									variant='outlined'>
+									{ratingValues.map((option) => (
+										<MenuItem key={option.value} value={option.value}>
+											{option.label}
+										</MenuItem>
+									))}
+								</TextField>
+							</Grid>
+							<Grid item md={12} xs={12}>
+								<TextField
+									onChange={(e) => setComment(e.target.value)}
+									id='outlined-helperText'
+									label='You Comment'
+									value={comment}
+									variant='outlined'
+								/>
+							</Grid>
+							<Grid item md={12} xs={12}>
+								<Button onClick={addComment} className='submit-btn' variant='contained' color='secondary'>
+									Send
+								</Button>
+							</Grid>
+						</Grid>
 					</div>
 				</Grid>
 			</Grid>

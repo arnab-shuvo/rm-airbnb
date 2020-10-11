@@ -15,6 +15,10 @@ export const SliderImage = styled.div`
 export const SearchItemWrapper = styled(Grid)`
 	padding: 40px 0;
 	border-bottom: 1px solid #dbdbdb;
+	cursor: pointer;
+	&:hover {
+		box-shadow: 0px 0px 10px 6px #cdcdcd;
+	}
 	.item {
 		&-rating {
 			p {
@@ -39,6 +43,10 @@ export const SearchItemWrapper = styled(Grid)`
 			font-size: 1.6rem;
 			margin-bottom: 10px;
 			color: #000;
+			cursor: pointer;
+			&:hover {
+				color: #888888;
+			}
 		}
 		&-des {
 			font-size: 1.3rem;
