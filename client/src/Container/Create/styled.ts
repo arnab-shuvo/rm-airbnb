@@ -28,4 +28,9 @@ export const CreateFormWrapper = styled.div`
 	button.submit-btn {
 		margin-bottom: 80px;
 	}
+	.provide-image-title {
+		margin-top: 20px;
+		margin-bottom: 10px;
+		font-weight: bold;
+	}
 `;

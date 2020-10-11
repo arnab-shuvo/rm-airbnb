@@ -25,7 +25,7 @@ const ReviewItem: React.FC<ILatestReviewProp> = ({ property }) => {
 				))}
 			</div>
 			<div className='item-des'>
-				<p>{latestComment.comment}</p>
+				<p>{latestComment ? latestComment.comment : ''}</p>
 			</div>
 			<div className='item-reviewer'>
 				<Grid container>
@@ -36,8 +36,8 @@ const ReviewItem: React.FC<ILatestReviewProp> = ({ property }) => {
 					</Grid>
 					<Grid item md={8}>
 						<div className='reviewer-info'>
-							<p className='name'>{latestComment.user.name}</p>
-							<p className='location'>{latestComment.user.location}</p>
+							<p className='name'>{latestComment ? latestComment.user.name : ''}</p>
+							<p className='location'>{latestComment ? latestComment.user.location : ''}</p>
 						</div>
 					</Grid>
 				</Grid>

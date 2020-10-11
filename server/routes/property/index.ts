@@ -12,6 +12,7 @@ router.get('/latest-reviews', latestProperty);
 router.post('/comment', commentValidator, addComment);
 router.get('/:id', getPropertyDetail);
 
-router.post('/', authValidator, propertyValidator, createProperty);
+router.post('/', propertyValidator, createProperty);
+// router.post('/', authValidator, propertyValidator, createProperty);
 
 module.exports = router;

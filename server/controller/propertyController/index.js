@@ -112,6 +112,16 @@ function searchProperty(req, res) {
                     _d.trys.push([1, 4, , 5]);
                     return [4 /*yield*/, Property.find({
                             $or: [{ city: new RegExp(location, 'gi') }, { country: new RegExp(location, 'gi') }],
+                            $and: [
+                                {
+                                    start_date: {
+                                        $gt: start_date,
+                                    },
+                                    end_date: {
+                                        $lt: end_date,
+                                    },
+                                },
+                            ],
                         })
                             .limit(limit * 1)
                             .skip((page - 1) * limit)
