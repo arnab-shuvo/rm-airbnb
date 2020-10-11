@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { FooterBottomWrapper } from './styled';
+import { Link } from 'react-router-dom';
 const FooterBottom: React.FC = () => {
 	return (
 		<FooterBottomWrapper container>
@@ -10,28 +11,13 @@ const FooterBottom: React.FC = () => {
 			<Grid item md={6} xs={12}>
 				<ul>
 					<li>
-						<a>Terms</a>
+						<Link to='#'>Terms</Link>
 					</li>
 					<li>
-						<a>Privacy</a>
+						<Link to='#'>Privacy</Link>
 					</li>
 					<li>
-						<a>Sitemap</a>
-					</li>
-					<li>
-						<a>
-							<i className='flaticon-'></i>
-						</a>
-					</li>
-					<li>
-						<a>
-							<i className='flaticon-'></i>
-						</a>
-					</li>
-					<li>
-						<a>
-							<i className='flaticon-'></i>
-						</a>
+						<Link to='#'>Sitemap</Link>
 					</li>
 				</ul>
 			</Grid>

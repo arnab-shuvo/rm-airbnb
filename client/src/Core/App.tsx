@@ -20,7 +20,6 @@ function App() {
 			},
 		},
 	});
-	console.log(process.env, 'process.env');
 
 	return (
 		<MuiThemeProvider theme={theme}>

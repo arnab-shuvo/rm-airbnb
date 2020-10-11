@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 
-export const HeaderLayoutLeft = styled.div``;
+export const HeaderLayoutLeft = styled.div`
+	ul {
+		text-align: left !important;
+	}
+`;
 export const HeaderWrapper = styled.div`
 	padding: 10px;
 	ul {

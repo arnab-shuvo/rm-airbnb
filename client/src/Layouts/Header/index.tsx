@@ -17,13 +17,13 @@ const Header: React.FC = () => {
 							<Link to='/'>Home</Link>
 						</li>
 						<li>
-							<a href=''>Help</a>
+							<Link to='#'>Help</Link>
 						</li>
 						<li>
 							<Link to='/create'>Create property</Link>
 						</li>
 						<li>
-							<a href=''>List page</a>
+							<Link to='#'>List page</Link>
 						</li>
 					</ul>
 				</Grid>

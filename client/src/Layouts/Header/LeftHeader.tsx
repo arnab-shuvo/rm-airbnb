@@ -6,16 +6,16 @@ const LeftHeader: React.FC = () => {
 		<HeaderLayoutLeft>
 			<ul>
 				<li>
-					<a href=''>Become a Host</a>
+					<a href='#'>Become a Host</a>
 				</li>
 				<li>
-					<a href=''>Help</a>
+					<a href='#'>Help</a>
 				</li>
 				<li>
-					<a href=''>Login</a>
+					<a href='#'>Login</a>
 				</li>
 				<li>
-					<a href=''>Signup</a>
+					<a href='#'>Signup</a>
 				</li>
 			</ul>
 		</HeaderLayoutLeft>

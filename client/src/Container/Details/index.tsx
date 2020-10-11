@@ -14,7 +14,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import ratingCalculator from '../../util/ratingCalculator';
 
 const Details: React.FC = () => {
 	const dispatch = useDispatch();

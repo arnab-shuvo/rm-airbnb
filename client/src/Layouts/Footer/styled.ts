@@ -37,6 +37,10 @@ export const FooterBottomWrapper = styled(Grid)`
 			list-style: none;
 			display: inline-block;
 			margin-left: 20px;
+			a {
+				color: #222;
+				text-decoration: none;
+			}
 		}
 	}
 `;
