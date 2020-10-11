@@ -14,6 +14,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import ratingCalculator from '../../util/ratingCalculator';
 
 const Details: React.FC = () => {
 	const dispatch = useDispatch();
@@ -70,6 +71,7 @@ const Details: React.FC = () => {
 				.post(PROPERTY_COMMENT_URL, commentData)
 				.then((success: any) => {
 					toast.success(' Comment added');
+					dispatch(fetchPropertyDetail(id));
 				})
 				.catch((err: any) => {
 					toast.error('Something went wrong');
@@ -119,7 +121,8 @@ const Details: React.FC = () => {
 					</div>
 					<div className='property-info'>
 						<p className='property-info-title'>
-							<i className='flaticon-home'></i>Private room in flat
+							<i className='flaticon-home'></i>
+							{detail.property.property_type ?? ''}
 						</p>
 						<p className='property-info-des'>
 							<span>2 guests</span>
@@ -156,15 +159,38 @@ const Details: React.FC = () => {
 						<p className='property-features-des'>- Easy access to all tourist destination</p>
 						<p className='property-features-des'>- Large variety of pubs and restaurants close by</p>
 					</div>
+
+					<div className='property-reviews'>
+						<p className='title'>Reviews from all users</p>
+						{detail.property?.comments?.length &&
+							detail.property.comments.map((comment: IPropertyComment, index: number) => {
+								return (
+									<div className='property-reviews-block'>
+										<Grid container spacing={2}>
+											<Grid item md={1}>
+												<img src={'https://cdn.iconscout.com/icon/premium/png-256-thumb/female-avatar-12-774634.png'} />
+											</Grid>
+											<Grid item md={11}>
+												<p className='property-reviews-block-user'>
+													<strong>{comment.user.name}</strong> from {comment.user.location} rated with{' '}
+													<strong>{comment.rating}</strong> star
+												</p>
+												<p className='property-reviews-block-description'>{comment.comment}</p>
+											</Grid>
+										</Grid>
+									</div>
+								);
+							})}
+					</div>
 				</Grid>
 				<Grid item md={5} xs={12}>
 					<div className='property-operation'>
 						<p className='property-operation-price'>
-							<span>$24</span> per night
+							<span>${detail.property?.price ?? ''}</span> per night
 						</p>
 						<p className='property-operation-rating'>
 							<i className='flaticon-black-star-silhouette'></i>
-							<span>4.25</span> (215 reviews)
+							<span>{detail.overallRating ?? 0}</span> ({detail.property.comments ? detail.property.comments.length : 0} reviews)
 						</p>
 						<p className='property-operation-date'>Dates</p>
 						<div className='property-operation-date-wrapper'>

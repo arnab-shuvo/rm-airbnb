@@ -70,6 +70,24 @@ export const DetailWrapper = styled(Grid)`
 				margin: 5px 0;
 			}
 		}
+		&-reviews{
+			.title{
+				font-size: 1.3rem;
+				font-weight :bold;
+				border-top: 1px solid #cdcdcd;
+				padding-top: 30px;
+				margin-bottom: 10px;
+			}
+			&-block{
+				img{
+					width: 100%;
+
+				}
+				border-top: 1px dashed #f1f1f1;
+				padding: 20px 0;
+			}
+			margin-bottom: 40px;
+		}
 
 		&-operation{
 			margin-bottom: 20px;

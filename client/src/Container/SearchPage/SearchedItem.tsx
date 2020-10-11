@@ -5,9 +5,11 @@ import { Fade } from 'react-slideshow-image';
 import { FILES_SERVER } from '../../Constants/url';
 import 'react-slideshow-image/dist/styles.css';
 import { useHistory } from 'react-router';
+import ratingCalculator from '../../util/ratingCalculator';
 
 const SearchedItem: React.FC<IPropertyDetail> = ({ property, overallRating }) => {
 	const history = useHistory();
+	const rating = ratingCalculator(property && property.comments ? property.comments : []);
 	return (
 		<SearchItemWrapper container spacing={3} onClick={() => history.push(`/property/${property ? property.uuid : ''}`)}>
 			<Grid item md={5} xs={12}>
@@ -27,7 +29,8 @@ const SearchedItem: React.FC<IPropertyDetail> = ({ property, overallRating }) =>
 							</Grid>
 							<Grid item md={6} xs={12}>
 								<p className='item-rate text-right'>
-									<i className='flaticon-black-star-silhouette'></i> {overallRating} <span>(207)</span>
+									<i className='flaticon-black-star-silhouette'></i> {rating !== NaN ? rating : ''}{' '}
+									<span>({property ? property.comments?.length : ''})</span>
 								</p>
 							</Grid>
 						</Grid>
@@ -50,10 +53,10 @@ const SearchedItem: React.FC<IPropertyDetail> = ({ property, overallRating }) =>
 					<Grid item md={6}>
 						<div className='item-price text-right'>
 							<p className='per-night'>
-								<span>$38/</span> night
+								<span>${property ? property.price : 0}/</span> night
 							</p>
 							<p className='total'>
-								$38 total <span>?</span>
+								${property ? property.price : 0} total <span>?</span>
 							</p>
 						</div>
 					</Grid>

@@ -58,7 +58,7 @@ async function searchProperty(req: any, res: any) {
 				},
 				{
 					end_date: {
-						$lte: new Date(end_date).toISOString(),
+						$gte: new Date(end_date).toISOString(),
 					},
 				},
 			],

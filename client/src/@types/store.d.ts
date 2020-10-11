@@ -41,6 +41,7 @@ interface IPropertyDetail {
 		start_date?: Date;
 		end_date?: Date;
 		property_type?: string;
+		price?: number;
 	};
 	overallRating?: number;
 }

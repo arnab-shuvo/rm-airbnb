@@ -1,7 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { PlacesWrapper } from './styled';
-import CustomGrid from '../../../Components/CustomGrid';
+import CustomGrid from '../../../Common/CustomGrid';
 import Places from './Places';
 
 const PlacesInCity: React.FC = () => {

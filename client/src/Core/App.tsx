@@ -7,7 +7,7 @@ import Details from '../Container/Details';
 import MainLayout from '../Layouts/MainLayout';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './App.css';
-import Loader from '../Components/Loader';
+import Loader from '../Common/Loader';
 
 function App() {
 	const theme = createMuiTheme({
