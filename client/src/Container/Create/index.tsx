@@ -25,6 +25,7 @@ const CreateProperty: React.FC = () => {
 	const [country, setCountry] = useState<string>('');
 	const [fileArray, setFileArray] = useState<any[]>([]);
 	const [type, setType] = useState<string>('');
+	const [price, setPrice] = useState<number>();
 
 	const uploadFile = (files: File[]) => {
 		let fileArrayTemp: any[] = [];
@@ -131,15 +132,24 @@ const CreateProperty: React.FC = () => {
 							variant='outlined'
 						/>
 					</Grid>
-					<Grid item md={6} xs={12}>
+					<Grid item md={4} xs={12}>
 						<TextField onChange={(e) => setCity(e.target.value)} id='outlined-helperText' label='City' value={city} variant='outlined' />
 					</Grid>
-					<Grid item md={6} xs={12}>
+					<Grid item md={4} xs={12}>
 						<TextField
 							onChange={(e) => setCountry(e.target.value)}
 							id='outlined-helperText'
 							label='Country'
 							value={country}
+							variant='outlined'
+						/>
+					</Grid>
+					<Grid item md={4} xs={12}>
+						<TextField
+							onChange={(e) => setPrice(parseInt(e.target.value))}
+							id='outlined-helperText'
+							label='Price'
+							value={price}
 							variant='outlined'
 						/>
 					</Grid>

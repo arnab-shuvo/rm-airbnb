@@ -25,6 +25,10 @@ const postSchema = new mongoose.Schema(
 			type: Date,
 			required: 'End Date is required',
 		},
+		price: {
+			type: Number,
+			required: 'Price is required',
+		},
 		property_type: {
 			type: String,
 			required: 'Type is required',

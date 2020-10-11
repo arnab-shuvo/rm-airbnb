@@ -7,6 +7,7 @@ module.exports = (req: any, res: any, next: any) => {
 	req.check('end_date', 'Available Date required').notEmpty();
 	req.check('city', 'City required').notEmpty();
 	req.check('country', 'Country required').notEmpty();
+	req.check('price', 'Price required').notEmpty();
 	req.check('image', 'Image required').notEmpty();
 
 	const errors = req.validationErrors();
