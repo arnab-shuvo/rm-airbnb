@@ -5,6 +5,8 @@ Powered by
 
 rm-AirBnb is a miniature type product of AirBnb which is created to demonstrate my skills of ReactJs and Nodejs. Dur to time line, many features that I wanted to ad,is not included yet but if time provided, things can be make possible.
 
+-   for docker change the conenction string from "localhost:3000" to "mongo:3000" in server.ts file
+
 ### Tech
 
 rm-AirBnb uses a number of open source projects to work properly:
@@ -76,7 +78,7 @@ $ npm run dev
 
 ### For Docker
 
--   configure ports in client/config.js and /docker-compose.yml file according to pc configuration
+-   for docker change the conenction string from "localhost:3000" to "mongo:3000" in server.ts file
 
 To run the project in docker, run the following commands
 
