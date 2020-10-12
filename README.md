@@ -1,12 +1,13 @@
-# Packman
+# rm-AirBnb
 
-Powered by [[ ReactJs]](https://reactjs.org/) and [[ NodeJs]](https://nodejs.org/en/)
+Powered by
+[[ ReactJs]](https://reactjs.org/) [![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
 
-Packman is a service to measure and compare the unzipped and minified size of different versions of npm packages
+rm-AirBnb is a miniature type product of AirBnb which is created to demonstrate my skills of ReactJs and Nodejs. Dur to time line, many features that I wanted to ad,is not included yet but if time provided, things can be make possible.
 
 ### Tech
 
-Packman uses a number of open source projects to work properly:
+rm-AirBnb uses a number of open source projects to work properly:
 
 -   Nodejs - Server Side language
 -   ReactJs - SPA!
@@ -16,6 +17,25 @@ Packman uses a number of open source projects to work properly:
 -   Styled Components - design the componentss
 -   Docker
 -   Docker-compose
+-   yarn
+
+### Features Added
+
+-   Creating Proeperty entry including available dates
+-   Searching property by date and location
+-   Add comment on a particular property
+-   show the latest reviewd property in the home page
+-   Detail information for a particular property
+-   Authentication is added in API but not implemented in the frontend though
+
+### Features can be Added in future
+
+-   Reservation system
+-   Searching on proeprty type
+-   Authentication system can be added in the frontend
+-   Comments can be varified
+-   Payment system can be added
+-   SSR can be introduced
 
 ### Installation for Development
 
