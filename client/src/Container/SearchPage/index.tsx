@@ -21,7 +21,7 @@ const SearchPage: React.FC = () => {
 			searchQuery.start_date = DateParserToISO(startDate.toString());
 			searchQuery.end_date = DateParserToISO(endDate.toString());
 		}
-		if (location !== '') {
+		if (location && location !== '') {
 			searchQuery.location = location;
 		}
 		dispatch(searchProperty(searchQuery));

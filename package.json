@@ -36,6 +36,6 @@
 	"scripts": {
 		"server": "cd server && tsc && nodemon server.js",
 		"client": "cd client && npm start",
-		"dev": "cd ./client && npm install && npm run build && cd ../ &&   cd server  && tsc && node server.js"
+		"dev": "cd ./client && yarn && yarn run build && cd ../ &&   cd server  && tsc && node server.js"
 	}
 }

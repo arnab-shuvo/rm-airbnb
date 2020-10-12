@@ -49,7 +49,7 @@ async function searchProperty(req: any, res: any) {
 		limit = 10,
 		start_date = new Date().toISOString(),
 		end_date = new Date(now_date.setFullYear(now_date.getFullYear() + 1)).toISOString(),
-		location = '',
+		location = '[abc]*',
 	} = req.query;
 	page = parseInt(page);
 	console.log(start_date, end_date);

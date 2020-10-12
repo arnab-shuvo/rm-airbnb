@@ -74,6 +74,10 @@ const CreateProperty: React.FC = () => {
 			toast.error(' Provide a valid type ');
 			isSubmit = false;
 		}
+		if (!price) {
+			toast.error(' Provide a valid Price ');
+			isSubmit = false;
+		}
 		if (fileArray.length < 3 || filed.length < 3) {
 			toast.error(' Provide a atleast 3 images ');
 			isSubmit = false;
@@ -89,6 +93,7 @@ const CreateProperty: React.FC = () => {
 				description,
 				city,
 				country,
+				price,
 				property_type: type,
 				start_date: Date.parse(dateRange.startDate ? dateRange.startDate.toString() : ''),
 				end_date: Date.parse(dateRange.endDate ? dateRange.endDate.toString() : ''),
@@ -107,6 +112,7 @@ const CreateProperty: React.FC = () => {
 				});
 		}
 	};
+	let nowDate = new Date();
 	return (
 		<CreateFormWrapper>
 			<ToastContainer position='top-right' newestOnTop={true} closeOnClick pauseOnHover />
@@ -171,7 +177,7 @@ const CreateProperty: React.FC = () => {
 										setDateRange(range);
 										setOpen(false);
 									}}
-									minDate={new Date()}
+									minDate={new Date(nowDate.setDate(nowDate.getDate() - 1))}
 								/>
 							</div>
 						</div>
