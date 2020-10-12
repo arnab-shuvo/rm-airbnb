@@ -39,6 +39,8 @@ rm-AirBnb uses a number of open source projects to work properly:
 
 ### Installation for Development
 
+-   configure ports in client/config.js and /docker-compose.yml file according to pc configuration
+
 To run the project in development mood, run the following commands
 
 To Start the server, run
@@ -58,19 +60,7 @@ $ yarn client or npm run client
 
 ### Installation for prod
 
-To run the project in built mood, run the following commands
-
-```sh
-$ yarn dev
-```
-
-Or for npm,
-
-```sh
-$ npm run dev
-```
-
-### Installation for prod
+-   configure ports in client/config.js and /docker-compose.yml file according to pc configuration
 
 To run the project in built mood, run the following commands
 
@@ -85,6 +75,8 @@ $ npm run dev
 ```
 
 ### For Docker
+
+-   configure ports in client/config.js and /docker-compose.yml file according to pc configuration
 
 To run the project in docker, run the following commands
 
