@@ -43,9 +43,16 @@ async function getProperty(req: any, res: any) {
 }
 
 async function searchProperty(req: any, res: any) {
-	let { page = 1, limit = 10, start_date, end_date, location = '' } = req.query;
+	let now_date = new Date();
+	let {
+		page = 1,
+		limit = 10,
+		start_date = new Date().toISOString(),
+		end_date = new Date(now_date.setFullYear(now_date.getFullYear() + 1)).toISOString(),
+		location = '',
+	} = req.query;
 	page = parseInt(page);
-	console.log(new Date(start_date).toISOString(), new Date(end_date).toISOString(), location);
+	console.log(start_date, end_date);
 
 	try {
 		let property = await Property.find({
@@ -121,7 +128,7 @@ async function getPropertyDetail(req: any, res: any) {
 
 async function latestProperty(req: any, res: any) {
 	const { limit = 3 } = req.query;
-	let property = await Property.find({}, {}, { sort: { updatedAt: -1 } })
+	let property = await Property.find({ comments: { $ne: [] } }, {}, { sort: { updatedAt: -1 } })
 		.limit(limit * 1)
 		.exec();
 	res.json(property);

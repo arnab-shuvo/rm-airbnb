@@ -4,6 +4,7 @@ import Home from '../Container/Home';
 import CreateProperty from '../Container/Create';
 import SearchPage from '../Container/SearchPage';
 import Details from '../Container/Details';
+import NotFound from '../Container/NotFound';
 import MainLayout from '../Layouts/MainLayout';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import './App.css';
@@ -31,7 +32,8 @@ function App() {
 						<Route exact path='/search' component={SearchPage} />
 						<Route exact path='/create' component={CreateProperty} />
 						<Route exact path='/property/:id' component={Details} />
-						<Route path='*' render={() => <Redirect to='/' />} />
+						<Route exact path='/404' component={NotFound} />
+						<Route path='*' render={() => <Redirect to='/404' />} />
 					</Switch>
 				</MainLayout>
 			</Router>

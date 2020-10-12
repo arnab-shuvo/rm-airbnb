@@ -6,16 +6,13 @@ const LeftHeader: React.FC = () => {
 		<HeaderLayoutLeft>
 			<ul>
 				<li>
-					<a href='#'>Become a Host</a>
+					<input type='text' className='search-prop left' placeholder='Anywhere' defaultValue={''} />
 				</li>
 				<li>
-					<a href='#'>Help</a>
+					<input type='text' className='search-prop' placeholder='Anytime' defaultValue={''} />
 				</li>
 				<li>
-					<a href='#'>Login</a>
-				</li>
-				<li>
-					<a href='#'>Signup</a>
+					<input type='text' className='search-prop right' placeholder='1 guest' defaultValue={''} />
 				</li>
 			</ul>
 		</HeaderLayoutLeft>

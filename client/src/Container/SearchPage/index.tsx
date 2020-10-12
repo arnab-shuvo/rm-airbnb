@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react';
-import Grid from '@material-ui/core/Grid';
 import { SearchPageWrapper } from './styled';
 import SearchedItem from './SearchedItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams, useLocation } from 'react-router';
+import { useLocation } from 'react-router';
 import { searchProperty } from '../../Store/Actions/SearchPropertyAction';
 import { DateParserToISO } from '../../util/dateTimeUtil';
 
 const SearchPage: React.FC = () => {
 	const { property } = useSelector((state: IRootStore) => state.searchStore);
-	const urlVal = useParams();
 	let params = new URLSearchParams(useLocation().search);
 	const startDate = params.get('start_date');
 	const endDate = params.get('end_date');
@@ -27,7 +25,7 @@ const SearchPage: React.FC = () => {
 			searchQuery.location = location;
 		}
 		dispatch(searchProperty(searchQuery));
-	}, [startDate, endDate, location]);
+	}, [dispatch, startDate, endDate, location]);
 
 	return (
 		<SearchPageWrapper>

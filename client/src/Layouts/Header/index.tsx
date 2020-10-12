@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Header: React.FC = () => {
 	return (
 		<HeaderWrapper>
-			<Grid container>
+			<Grid container alignItems={'center'}>
 				<Grid item md={6} xs={12}>
 					<LeftHeader />
 				</Grid>

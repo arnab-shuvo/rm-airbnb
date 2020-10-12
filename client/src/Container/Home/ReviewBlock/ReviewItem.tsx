@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 import ratingCalculator from '../../../util/ratingCalculator';
 
 const ReviewItem: React.FC<ILatestReviewProp> = ({ property }) => {
-	const { title, comments, description, image, uuid } = property;
+	const { comments, image, uuid } = property;
 	const history = useHistory();
 
 	let latestComment = comments[comments.length - 1];
@@ -31,7 +31,7 @@ const ReviewItem: React.FC<ILatestReviewProp> = ({ property }) => {
 				<Grid container>
 					<Grid item md={2}>
 						<div className='icon'>
-							<img src='https://justice.org.au/wp-content/uploads/2017/08/avatar-icon.png' />
+							<img alt={'airBnb'} src='https://justice.org.au/wp-content/uploads/2017/08/avatar-icon.png' />
 						</div>
 					</Grid>
 					<Grid item md={8}>

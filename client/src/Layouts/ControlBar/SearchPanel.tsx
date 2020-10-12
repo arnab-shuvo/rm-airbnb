@@ -7,7 +7,6 @@ import { DateRangePicker, DateRange } from 'materialui-daterange-picker';
 import dateConverter from '../../util/dateTimeUtil';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 
 const SearchPanel: React.FC = () => {
@@ -16,7 +15,6 @@ const SearchPanel: React.FC = () => {
 	const [location, setLocation] = useState<string>('');
 
 	const history = useHistory();
-	const dispatch = useDispatch();
 
 	const submitSearch = () => {
 		if (!Object.keys(dateRange).length) {

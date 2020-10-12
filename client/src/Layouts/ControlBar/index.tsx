@@ -1,26 +1,26 @@
 import React from 'react';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import SearchPanel from './SearchPanel';
-import { TabPanel } from './styled';
+import { ControlBarWrapper } from './styled';
+import { NavLink } from 'react-router-dom';
 
 const ControlBar: React.FC = () => {
-	const [value, setValue] = React.useState(0);
-
-	const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
-		setValue(newValue);
-	};
-
 	return (
 		<>
-			<TabPanel>
-				<Tabs value={value} indicatorColor='primary' textColor='primary' onChange={handleChange} aria-label='disabled tabs example'>
-					<Tab label='FOR YOU' />
-					<Tab label='Homes' disabled />
-					<Tab label='EXPERIENCES' disabled />
-					<Tab label='PLACES' disabled />
-				</Tabs>
-			</TabPanel>
+			<ControlBarWrapper>
+				<ul>
+					<li>
+						<NavLink exact to='/'>
+							Home
+						</NavLink>
+					</li>
+					<li>
+						<NavLink to='/search'>Search</NavLink>
+					</li>
+					<li>
+						<NavLink to='/create'>Create</NavLink>
+					</li>
+				</ul>
+			</ControlBarWrapper>
 			<SearchPanel />
 		</>
 	);

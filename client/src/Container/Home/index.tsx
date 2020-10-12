@@ -1,6 +1,5 @@
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import { HomeWrapper, BannerText } from './styled';
+import { HomeWrapper } from './styled';
 import ReviewBlock from './ReviewBlock';
 import JustBookedBlock from './JustBookedBlock';
 import PlacesInCity from './PlacesInCity';

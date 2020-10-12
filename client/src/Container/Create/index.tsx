@@ -16,7 +16,6 @@ import { useHistory } from 'react-router';
 const CreateProperty: React.FC = () => {
 	const history = useHistory();
 	const [filed, setFiles] = useState<File[]>([]);
-	const [currency, setCurrency] = React.useState('single');
 	const [open, setOpen] = useState<boolean>(false);
 	const [dateRange, setDateRange] = useState<DateRange>({});
 	const [title, setTitle] = useState<string>('');
@@ -75,7 +74,7 @@ const CreateProperty: React.FC = () => {
 			toast.error(' Provide a valid type ');
 			isSubmit = false;
 		}
-		if (fileArray.length < 3) {
+		if (fileArray.length < 3 || filed.length < 3) {
 			toast.error(' Provide a atleast 3 images ');
 			isSubmit = false;
 		}

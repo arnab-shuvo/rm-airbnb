@@ -93,6 +93,29 @@ export const SearchPanelWrapper = styled.div`
 		}
 	}
 `;
-export const TabPanel = styled.div`
-	border-bottom: 1px solid #dbdbdb;
+export const ControlBarWrapper = styled.div`
+	ul {
+		padding: 30px 20px;
+		padding-bottom: 0;
+		margin: 0;
+		border-bottom: 1px solid #cdcdcd;
+		li{
+			list-style-none;
+			display: inline-block;
+			margin-right: 10px;
+			
+			
+			a{
+				color: #222;
+				padding: 0 20px;
+				display: block;
+				padding-bottom:10px;
+				text-decoration: none;
+				&.active{
+					color: #00a799;
+					border-bottom: 1px solid #00a799;
+				}
+			}
+		}
+	}
 `;

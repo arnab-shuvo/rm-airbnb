@@ -50,22 +50,34 @@ const FooterTop: React.FC = () => {
 				<p className='footer-widget-title'>WaterCnC</p>
 				<ul>
 					<li>
-						<a href='#'>About</a>
+						<a target='_blank' href='/about'>
+							About
+						</a>
 					</li>
 					<li>
-						<a href='#'>Career</a>
+						<a target='_blank' href='/career'>
+							Career
+						</a>
 					</li>
 					<li>
-						<a href='#'>Page</a>
+						<a target='_blank' href='/page'>
+							Page
+						</a>
 					</li>
 					<li>
-						<a href='#'>Press</a>
+						<a target='_blank' href='/press'>
+							Press
+						</a>
 					</li>
 					<li>
-						<a href='#'>Policies</a>
+						<a target='_blank' href='/policies'>
+							Policies
+						</a>
 					</li>
 					<li>
-						<a href='#'>Diversity & belonging</a>
+						<a target='_blank' href='/div'>
+							Diversity & belonging
+						</a>
 					</li>
 				</ul>
 			</Grid>
@@ -73,22 +85,34 @@ const FooterTop: React.FC = () => {
 				<p className='footer-widget-title'>Discover</p>
 				<ul>
 					<li>
-						<a href='#'>Trust & Safety</a>
+						<a target='_blank' href='/trust'>
+							Trust & Safety
+						</a>
 					</li>
 					<li>
-						<a href='#'>Travel Credit</a>
+						<a target='_blank' href='/tc'>
+							Travel Credit
+						</a>
 					</li>
 					<li>
-						<a href='#'>Gift Cards</a>
+						<a target='_blank' href='/gc'>
+							Gift Cards
+						</a>
 					</li>
 					<li>
-						<a href='#'>WaterCnC Citizen</a>
+						<a target='_blank' href='/wc'>
+							WaterCnC Citizen
+						</a>
 					</li>
 					<li>
-						<a href='#'>Business Travel</a>
+						<a target='_blank' href='/bt'>
+							Business Travel
+						</a>
 					</li>
 					<li>
-						<a href='#'>Megazine</a>
+						<a target='_blank' href='/meg'>
+							Megazine
+						</a>
 					</li>
 				</ul>
 			</Grid>
@@ -96,16 +120,24 @@ const FooterTop: React.FC = () => {
 				<p className='footer-widget-title'>Hosting</p>
 				<ul>
 					<li>
-						<a href='#'>Why Host</a>
+						<a target='_blank' href='/wh'>
+							Why Host
+						</a>
 					</li>
 					<li>
-						<a href='#'>Hospitality</a>
+						<a target='_blank' href='/hopitality'>
+							Hospitality
+						</a>
 					</li>
 					<li>
-						<a href='#'>Reasonable Hosting</a>
+						<a target='_blank' href='/rh'>
+							Reasonable Hosting
+						</a>
 					</li>
 					<li>
-						<a href='#'>Community Center</a>
+						<a target='_blank' href='/cc'>
+							Community Center
+						</a>
 					</li>
 				</ul>
 			</Grid>

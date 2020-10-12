@@ -51,7 +51,7 @@ const Details: React.FC = () => {
 
 	useEffect(() => {
 		dispatch(fetchPropertyDetail(id));
-	}, []);
+	}, [dispatch, id]);
 
 	const addComment = () => {
 		if (name === '' || comment === '' || !rating || location === '') {
@@ -92,7 +92,7 @@ const Details: React.FC = () => {
 					<p className='property-summary-subtitle'>
 						{detail.property.city ?? ''}, {detail.property.country ?? ''}
 					</p>
-					<img src={TripAdvisor} />
+					<img src={TripAdvisor} alt={'trip-advisor'} />
 				</div>
 			</Grid>
 			<PropertyImageWrapper container item md={12} xs={12}>
@@ -113,7 +113,7 @@ const Details: React.FC = () => {
 								<p className='property-des-lcoation'>{detail.property.city ?? ''}</p>
 							</Grid>
 							<Grid item md={1} xs={12}>
-								<img src={'https://cdn.iconscout.com/icon/premium/png-256-thumb/female-avatar-12-774634.png'} />
+								<img alt='airBnb' src={'https://cdn.iconscout.com/icon/premium/png-256-thumb/female-avatar-12-774634.png'} />
 								<p className='property-des-user'>Arnab</p>
 							</Grid>
 						</Grid>
@@ -167,7 +167,10 @@ const Details: React.FC = () => {
 									<div className='property-reviews-block'>
 										<Grid container spacing={2}>
 											<Grid item md={1}>
-												<img src={'https://cdn.iconscout.com/icon/premium/png-256-thumb/female-avatar-12-774634.png'} />
+												<img
+													alt={'airbnb'}
+													src={'https://cdn.iconscout.com/icon/premium/png-256-thumb/female-avatar-12-774634.png'}
+												/>
 											</Grid>
 											<Grid item md={11}>
 												<p className='property-reviews-block-user'>
